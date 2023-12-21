@@ -1,7 +1,8 @@
-package com.spring;
+package com.spring.learnSpringBeans;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 record Person(String name, int age, Address address){};
 record Address(String firstLine, String state){};
@@ -34,7 +35,9 @@ public class HelloAppConfiguration {
         return new Address("village: Chudiyala", "Uttarakand");
     }
     @Bean(name = "address2")
+    @Primary          // to avoid following exception (available: expected single matching bean but found 2: address,address2), We can use @qualifier("name") as well
     public Address address2(){
         return new Address("village: Roorkee", "Uttarakand");
     }
+
 }
