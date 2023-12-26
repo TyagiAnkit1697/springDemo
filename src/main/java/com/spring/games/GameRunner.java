@@ -1,14 +1,18 @@
 package com.spring.games;
 
-import com.spring.games.GammingConsole;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GameRunner {
-    private GammingConsole gammingConsole;
+    private final GammingConsole gammingConsole;
 
-    public GameRunner(GammingConsole gammingConsole){
+    // if you remove the Qualifier it will run the class which have @Primary annotation on it in case of multiple beans
+    public GameRunner(@Qualifier("SuperContraGameQualifier") GammingConsole gammingConsole){
         this.gammingConsole = gammingConsole;
     }
     public void run(){
+        System.out.println(gammingConsole);
         gammingConsole.up();
         gammingConsole.down();
         gammingConsole.right();

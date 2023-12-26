@@ -1,5 +1,8 @@
 package com.spring.games;
 
+import org.springframework.stereotype.Component;
+
+@Component(value = "pacman")
 public class PacManGame implements GammingConsole {
     @Override
     public void up() {
